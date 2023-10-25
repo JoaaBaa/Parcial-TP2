@@ -7,7 +7,7 @@ class ModelMem {
             { id: "3", titulo: 'Libro3', anio: 2018 },
         ]
     }
-    obtenerSample = id => {    
+    obtenerSample = async id => {    
         if(id) {
             const sample = this.samples.find( sample => sample.id === id )
             return sample || {}
@@ -17,14 +17,14 @@ class ModelMem {
         }
     }
     
-    guardarSample = sample => {
+    guardarSample = async sample => {
         sample.id = String(parseInt(this.samples[this.samples.length - 1]?.id || 0) + 1) // ?. optional chaining
         sample.anio = Number(sample.anio)
         this.samples.push(sample)
         return sample
     }
     
-    actualizarSample = (id, sample) => {
+    actualizarSample = async (id, sample) => {
         sample.id = id
     
         const index = this.samples.findIndex( sample => sample.id === id )
@@ -40,7 +40,7 @@ class ModelMem {
         }
     }
     
-    borrarSample = id => {
+    borrarSample = async id => {
         let sample = {}
     
         const index = this.samples.findIndex( sample => sample.id === id )
