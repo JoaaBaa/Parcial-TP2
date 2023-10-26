@@ -6,10 +6,10 @@ class ModelFile {
         this.nombreArchivo = 'samples.json'
     }
 
-    leerArchivo = async nombre => {
+    leerArchivo = async nombre => {ls
         let samples = []
         try {
-            samples = JSON.parse(await fs.readFileSync(nombre, 'utf-8'))
+            samples = JSON.parse(await fs.promises.readFileSync(nombre, 'utf-8'))
         }
         catch {}
         return samples
@@ -17,7 +17,7 @@ class ModelFile {
 
      escribirArchivo  = async (nombre, samples) => {
         //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#value
-        await fs.writeFileSync(nombre, JSON.stringify(samples,null,'\t'))
+        await fs.promises.writeFileSync(nombre, JSON.stringify(samples,null,'\t'))
     }
 
 
