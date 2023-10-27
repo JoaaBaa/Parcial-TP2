@@ -1,16 +1,16 @@
 import express from 'express'
-import RouterSample from'./router/sample.js'
+import RouterNumeros from'./router/numeros.js'
 
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-app.use(express.static('public'))
+app.use('/numeros', express.static('public'));
 
 // -----------------------------------------------
 //         API RESTful : Libros
 // -----------------------------------------------
-app.use('/api/sample', new RouterSample().start())
+app.use('/numeros', new RouterNumeros().start())
 
 // -----------------------------------------------
 //        LISTEN DEL SERVIDOR EXPRESS
